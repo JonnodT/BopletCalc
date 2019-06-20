@@ -148,9 +148,9 @@ public class Report {
 	private void fakeAnalysis() {
 		try {
 			Thread.sleep(500);
-			System.out.print("Congratulations！You finished all the problems");
+			System.out.println("Congratulations！You finished all the problems");
 			Thread.sleep(1200);
-			System.out.print("Generating practice report");
+			System.out.println("Generating practice report");
 			Thread.sleep(1000);
 			System.out.print(".");
 			Thread.sleep(1000);
