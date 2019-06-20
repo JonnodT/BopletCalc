@@ -7,9 +7,9 @@ public class Report {
 	
 	private static final String[] operants = {"","+","-","+","-","x","x"};
 	
-	private int correctNum;     //做对的题数
-	private int wrongNum;       //做错的题数
-	private long timeInMillis;  //用时 单位：毫秒
+	private int correctNum;     //Number of problems that player got right
+	private int wrongNum;       //Number of problems that player got wrong
+	private long timeInMillis;  //Time in milliseconds
 	
 	
 	
@@ -40,17 +40,17 @@ public class Report {
 	public String getType(int questionType) {
 		switch(questionType) {
 		case 1:
-			return "两位数加两位数";
+			return "2 digits plus 2 digits";
 		case 2:
-			return "两位数减两位数";
+			return "2 digits minus 2 digits";
 		case 3:
-			return "三位数加三位数";
+			return "3 digits plus 3 digits";
 		case 4:
-			return "三位数减三位数";
+			return "3 digits minus 3 digits";
 		case 5:
-			return "一位数乘两位数";
+			return "1 digit times 2 digits";
 		case 6:
-			return "两位数乘两位数";
+			return "2 digits times 2 digits";
 		}
 		return null;
 	}
@@ -89,17 +89,17 @@ public class Report {
 	public String getTime() { 
 		long second = timeInMillis/1000;
 		if(second < 60) {
-			return second+"秒";
+			return second+"sec";
 		}else if(second >= 60 && second < 3600) {
 			long min = second/60;
 			second = second%60;
-			return min + "分" + second +"秒";
+			return min + "min" + second +"sec";
 		}else if(second >= 3600) {
 			long min = second/60;
 			long hour = min/60;
 			min = min%60;
 			second = second/60;
-			return hour +"小时" +min + "分钟" + second +"秒"; 
+			return hour +"hr" +min + "min" + second +"sec"; 
 		}
 		return null;
 	}
@@ -115,17 +115,17 @@ public class Report {
 	public String getSpeed() { //用字符形式返回一个两位小数，表示平均每道题用的秒数
 		DecimalFormat df = new DecimalFormat("#.00");
 		double result = (double)timeInMillis/(double)(wrongNum+correctNum)/1000;
-		return df.format(result) + "秒/题";
+		return df.format(result) + "sec/problem";
 	}
 	
 	public void printReport() {
 		fakeAnalysis();
 		int total = this.correctNum + this.wrongNum;
-		System.out.println("\t\t\t以下是您本次的速算报告");
-		System.out.println("您总共做了" + total +"道" + getType(questionType)+"速算题目");
-		System.out.println("总用时:"+getTime());
-		System.out.println("平均速度:"+ getSpeed());
-		System.out.println("正确率:"+ getCorrectRate()+"\n");
+		System.out.println("\t\t\tBelow is your practice report");
+		System.out.println("You did " + total + " " + getType(questionType)+" problems");
+		System.out.println("Total time:"+getTime());
+		System.out.println("Average speed:"+ getSpeed());
+		System.out.println("Correct rate:"+ getCorrectRate()+"\n");
 		if(wrongNum!=0) {
 			printErrors();
 		}
@@ -135,11 +135,11 @@ public class Report {
 	
 	private void printErrors() {
 		String opr = operants[questionType]; //获得运算符
-		System.out.println("以下是您这次没有做对的题目：");
+		System.out.println("Here are the problems you got wrong：");
 		Set<Integer> keyset = wrong.keySet();
 		for(Integer key : keyset) {
 			System.out.println(first.get(key)+" "+opr+" "+second.get(key) + " =");
-			System.out.println("您的答案:"+wrong.get(key)+"        "+"正确答案:"+answers.get(key));
+			System.out.println("Your answer:"+wrong.get(key)+"        "+"Correct answer:"+answers.get(key));
 		}
 		
 		
@@ -148,9 +148,9 @@ public class Report {
 	private void fakeAnalysis() {
 		try {
 			Thread.sleep(500);
-			System.out.print("恭喜您，完成所有题目！");
+			System.out.print("Congratulations！You finished all the problems");
 			Thread.sleep(1200);
-			System.out.print("正在生成报告");
+			System.out.print("Generating practice report");
 			Thread.sleep(1000);
 			System.out.print(".");
 			Thread.sleep(1000);

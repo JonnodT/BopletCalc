@@ -1,3 +1,4 @@
 # BopletCalc
 
-This is a program to help users practice mental calculation
+This is a program to help users practice mental arithmetic.
+

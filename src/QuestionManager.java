@@ -13,9 +13,9 @@ public class QuestionManager {
 	
 	
 	/**
-	 * 构造函数,初始化三个ArrayList，并产生题目
-	 * @param questionType 题目类型
-	 * @param questionNum 题目数量
+	 * Generate problems with 3 ArrayLists
+	 * @param questionType 
+	 * @param questionNum 
 	 */
 	public QuestionManager(int questionType, int questionNum){
 		first = new ArrayList<Integer>();
@@ -116,7 +116,7 @@ public class QuestionManager {
 		try {
 			answer = Integer.parseInt(ans);
 		}catch( NumberFormatException e) {
-			System.out.println("输入格式不正确，请输入纯数字！");
+			System.out.println("Incorrect input！Please enter number!");
 			answer = getUserAnswer();
 		}
 		return answer;
@@ -125,7 +125,7 @@ public class QuestionManager {
 	private static void ready_go() {
 		try {
 			Thread.sleep(800);
-			System.out.println("\t\t准备");
+			System.out.println("\t\tReady?");
 			Thread.sleep(1000);
 			System.out.println("\t\t3");
 			Thread.sleep(1000);
@@ -133,7 +133,7 @@ public class QuestionManager {
 			Thread.sleep(1000);
 			System.out.println("\t\t1");
 			Thread.sleep(1000);
-			System.out.println("\t\t开始！！");
+			System.out.println("\t\tGo！！");
 		} catch (Exception e) {
 
 		}
